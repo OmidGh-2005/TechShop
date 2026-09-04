@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <header className="flex w-full transition-all duration-300 bg-neutral-950 sticky top-0 z-1000">
+    <header className="flex w-full transition-all duration-300 bg-neutral-950 sticky top-0 z-1">
       <div className="container mx-auto px-20 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
