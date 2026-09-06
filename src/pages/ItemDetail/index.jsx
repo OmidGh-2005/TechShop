@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { getData } from "../../api/ProductApi";
 import { useParams } from "react-router-dom";
 import { Star, ShoppingCart, Truck } from "lucide-react";
+import { useCartStore } from "../../store/cartStore";
 
 const ItemDetailPage = () => {
   const [product, setProduct] = useState([]);
   console.log(product);
 
   const params = useParams();
+
+  const addToCart = useCartStore((state) => state.addToCart);
+  const z = useCartStore((state) => state.cart)
+  console.log("zus",z);
+  
 
   useEffect(() => {
     getData(`/products/${params.productId}`).then((data) => setProduct(data));
@@ -79,7 +85,10 @@ const ItemDetailPage = () => {
                 : "Out of stock"}
             </div>
 
-            <button className="mt-2 w-fit flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium rounded-xl px-6 py-3 shadow-[0_4px_20px_rgba(168,85,247,0.35)] hover:shadow-[0_4px_25px_rgba(168,85,247,0.5)] transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
+            <button
+              onClick={() => addToCart(product)}
+              className="mt-2 w-fit flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium rounded-xl px-6 py-3 shadow-[0_4px_20px_rgba(168,85,247,0.35)] hover:shadow-[0_4px_25px_rgba(168,85,247,0.5)] transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+            >
               <ShoppingCart className="w-4 h-4" strokeWidth={2} />
               Add to cart
             </button>

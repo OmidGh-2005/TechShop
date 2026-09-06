@@ -33,7 +33,7 @@ const Navbar = () => {
               </svg>
             </a>
             <a
-              href="/shop"
+              href="/cart"
               className="text-white hover:text-purple-500 transition-all font-medium"
             >
               <svg
