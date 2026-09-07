@@ -1,4 +1,10 @@
+import { useCartStore } from "../store/cartStore";
+
 const Navbar = () => {
+
+  const totalCart = useCartStore((state) => state.cart.length)
+
+
   return (
     <header className="flex w-full transition-all duration-300 bg-neutral-950 sticky top-0 z-1">
       <div className="container mx-auto px-20 py-4">
@@ -32,10 +38,16 @@ const Navbar = () => {
                 <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
               </svg>
             </a>
+
             <a
               href="/cart"
-              className="text-white hover:text-purple-500 transition-all font-medium"
+              className="relative flex items-center text-white hover:text-purple-500 transition-all font-medium"
             >
+              {totalCart > 0 && (
+                <span className="absolute -top-2 -right-2 min-w-4 h-4 px-1 flex items-center justify-center rounded-full bg-purple-500 text-white text-[10px] font-semibold leading-none ring-2 ring-neutral-950">
+                  {totalCart}
+                </span>
+              )}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -52,6 +64,7 @@ const Navbar = () => {
                 <path d="M3.103 6.034h17.794" />
                 <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" />
               </svg>
+
             </a>
             <a
               href="/about"
