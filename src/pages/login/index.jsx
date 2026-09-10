@@ -5,12 +5,12 @@ const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPasswrod, setShowPassword] = useState(false);
 
-  const handleSwitch = () => {git
+  const handleSwitch = () => {
     setIsLogin(!isLogin);
   };
 
   const handleSubmit = (e) => {
-    e.preventdefault();
+    e.preventDefault();
   };
 
   const [formData, setFormData] = useState({
